@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="facebook_app_id">2258039194569006</string> 
+    <string name="client_token">06676f3591401b6a53e2ee6507b9f51e</string>
+</resources>
