@@ -26,7 +26,7 @@ const ProfileScreen = ({ navigation }) => {
             const fbResponse = await axios.get(`https://graph.facebook.com/me?fields=email,name,id,picture.type(large)&access_token=${fbAccessToken}`);
             email = fbResponse.data.email || email;
             fullName = fbResponse.data.name || profile.full_name;
-            username = fbResponse.data.id || profile.username; 
+            username = fbResponse.data.id || profile.username;
             profilePicture = fbResponse.data.picture?.data?.url;
           }
 
@@ -77,13 +77,10 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {profile.profile_picture && <Image source={{ uri: profile.profile_picture }} style={styles.profilePicture} />}
-      <Text style={styles.title}>Welcome, {profile.full_name}!</Text>
-      <Text style={styles.field}>Username: {profile.username}</Text>
-      <Text style={styles.field}>Full Name: {profile.full_name}</Text>
+      <Text style={styles.name}>{profile.full_name}</Text>
+      <Text style={styles.username}>Username: {profile.username}</Text>
       <Text style={styles.field}>Email: {profile.email}</Text>
-      <View style={styles.logoutButtonContainer}>
-        <Button title="Logout" onPress={handleLogout} style={styles.logoutButton} />
-      </View>
+      <Button title="Logout" onPress={handleLogout} style={styles.logoutButton} />
     </View>
   );
 };
@@ -93,30 +90,33 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    backgroundColor: '#f5f5f5',
+    padding: 16,
   },
   profilePicture: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 120,
+    height: 120,
+    borderRadius: 60,
     marginBottom: 20,
   },
-  title: {
-    fontSize: 24,
+  name: {
+    fontSize: 26,
     fontWeight: 'bold',
+    marginBottom: 25,
+  },
+  username: {
+    fontSize: 20,
+    color: '#777',
+    marginBottom: 2,
   },
   field: {
-    fontSize: 18,
+    fontSize: 20,
     marginVertical: 8,
   },
-  logoutButtonContainer: {
-    marginTop: 200,
-    alignSelf: 'stretch',
-  },
   logoutButton: {
+    marginTop: 30,
     alignSelf: 'stretch',
-    backgroundColor: '#ff5252',
-    padding: 25,
+    backgroundColor: '#f0f8ff',
   },
 });
 

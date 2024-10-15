@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function MoviesListScreen({ navigation }) {
   const [movies, setMovies] = useState([]);
-
+  
   useEffect(() => {
     const apiUrl = 'http://172.20.10.7:8000/movies';
     console.log('Attempting to fetch movies from:', apiUrl)
@@ -45,11 +45,11 @@ export default function MoviesListScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#f0f8ff',
     padding: 16,
   },
   itemContainer: {
-    backgroundColor: '#FFEB3B',
+    backgroundColor: '#4E4187', 
     padding: 16,
     marginVertical: 8,
     borderRadius: 8,
@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#3F51B5', 
+    color: '#F8FFE5',
   },
   itemGenre: {
     fontSize: 16,
-    color: '#009688', 
+    color: '#F8FFE5', 
   },
 });
