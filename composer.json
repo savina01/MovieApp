@@ -1,6 +1,7 @@
 {
     "require": {
-      "laravel/framework": "^10.0"
+      "laravel/framework": "^10.0",
+        "tymon/jwt-auth": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -8,4 +9,3 @@
         }
     }
   }
-  

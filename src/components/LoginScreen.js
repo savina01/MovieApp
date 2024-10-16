@@ -17,7 +17,8 @@ export default function LoginScreen({ navigation }) {
     const subscriber = auth().onAuthStateChanged((user) => {
       console.log('Auth state changed:', user);
       setUser(user);
-      if (initializing) setInitializing(false);
+      if (initializing) 
+        setInitializing(false);
     });
     return subscriber; 
   }, [initializing]);
@@ -55,20 +56,13 @@ export default function LoginScreen({ navigation }) {
 
   const sendLoginInfoToBackend = async (email, password) => {
     try {
-      const response = await fetch('http://your-backend-endpoint.com/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
-      console.log('Backend response:', data);
-      return data;  
+      const response = await axios.post('http://172.20.10.7:8000/login', { email, password });
+      console.log('Backend response:', response.data); 
+      return response.data;
     } catch (error) {
       console.error('Error sending login info to backend:', error);
       Alert.alert('Error', 'Failed to connect to the backend.');
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -122,18 +116,17 @@ export default function LoginScreen({ navigation }) {
 
   const onEmailLoginPress = async () => {
     if (!validateEmailAndPassword()) return;
-
     try {
       setLoading(true);
       const backendResponse = await sendLoginInfoToBackend(email, password);
+      console.log("backend token:", backendResponse.token);
       if (backendResponse && backendResponse.token) {
-        const userCredential = await auth().signInWithEmailAndPassword(email, password);
-        await AsyncStorage.setItem('authToken', backendResponse.token);  
-
-        setUser(userCredential.user);
+        await AsyncStorage.setItem('authToken', backendResponse.token);
+        setUser(backendResponse.user);
         setLoading(false);
       } else {
-        throw new Error('Invalid login details.');
+        setLoading(false);
+        throw new Error('Invalid user information.');
       }
     } catch (error) {
       console.error(error);
@@ -160,17 +153,17 @@ export default function LoginScreen({ navigation }) {
         onChangeText={setPassword}
         secureTextEntry
       />
+      <Button
+        title="Login with Email"
+        onPress={onEmailLoginPress}
+      />
+      {loading && <ActivityIndicator size="large" color="#0000ff" />}
       <TouchableOpacity
         style={styles.fbButton}
         onPress={onFacebookButtonPress}
       >
         <Text style={styles.fbButtonText}>Login with Facebook</Text>
       </TouchableOpacity>
-      <Button
-        title="Login with Email"
-        onPress={onEmailLoginPress}
-      />
-      {loading && <ActivityIndicator size="large" color="#0000ff" />}
     </View>
   );
 }

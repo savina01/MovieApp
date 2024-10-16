@@ -4,20 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameAndFullNameToUsersTable extends Migration
+class RecreateUsersTable extends Migration
 {
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('username')->unique()->nullable()->after('id');
-            $table->string('full_name')->nullable()->after('username');
+        Schema::dropIfExists('users');
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('username')->unique();
+            $table->string('full_name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('facebook_id')->nullable();
+            $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['username', 'full_name']);
-        });
+        Schema::dropIfExists('users');
     }
 }

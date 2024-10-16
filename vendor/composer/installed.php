@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '1703e60d89092f7ba81c408a010c4d02a871bc66',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'bb9c948bb9d48ff9cfaaa8d3d680b1baf73fb413',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '1703e60d89092f7ba81c408a010c4d02a871bc66',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'bb9c948bb9d48ff9cfaaa8d3d680b1baf73fb413',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -334,6 +334,24 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'lcobucci/clock' => array(
+            'pretty_version' => '2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => 'fb533e093fd61321bfcbac08b131ce805fe183d3',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../lcobucci/clock',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'lcobucci/jwt' => array(
+            'pretty_version' => '4.0.4',
+            'version' => '4.0.4.0',
+            'reference' => '55564265fddf810504110bd68ca311932324b0e9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../lcobucci/jwt',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'league/commonmark' => array(
             'pretty_version' => '2.5.3',
             'version' => '2.5.3.0',
@@ -538,6 +556,15 @@
             'replaced' => array(
                 0 => '4.7.6',
             ),
+        ),
+        'stella-maris/clock' => array(
+            'pretty_version' => '0.1.7',
+            'version' => '0.1.7.0',
+            'reference' => 'fa23ce16019289a18bb3446fdecd45befcdd94f8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stella-maris/clock',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/console' => array(
             'pretty_version' => 'v6.4.12',
@@ -800,6 +827,15 @@
             'reference' => '83ee6f38df0a63106a9e4536e3060458b74ccedb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tijsverkoyen/css-to-inline-styles',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'tymon/jwt-auth' => array(
+            'pretty_version' => '2.1.1',
+            'version' => '2.1.1.0',
+            'reference' => '51620ebd5b68bb3ce9e66ba86bda303ae5f10f7f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tymon/jwt-auth',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

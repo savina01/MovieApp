@@ -69,7 +69,6 @@ const App = () => {
       if (remoteMessage.notification && remoteMessage.data && remoteMessage.data.movieId) {
         console.log('Notification caused app to open from background:', remoteMessage.notification);
 
-        // Fetch movie details from your backend
         const movieId = remoteMessage.data.movieId.toString();
         const response = await fetch(`http://10.0.2.2:8000/movies/${movieId}`);
         const movie = await response.json();
